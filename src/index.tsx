@@ -1,5 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Hello from '~components/Hello/index';
+import Life from '~components/Life/index';
 
-ReactDOM.render(<Hello />, document.getElementById('root'));
+ReactDOM.render(<Life />, document.getElementById('root'));

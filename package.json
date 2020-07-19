@@ -28,5 +28,9 @@
   "scripts": {
     "start": "parcel src/index.html --out-dir build/debug --open",
     "build": "parcel build src/index.html --out-dir build/release --public-url ./"
+  },
+  "dependencies": {
+    "@types/styled-components": "^5.1.1",
+    "styled-components": "^5.1.1"
   }
 }
