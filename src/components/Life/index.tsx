@@ -1,8 +1,9 @@
 import React, { useState, useCallback, useRef } from 'react';
 import { Cell, GridContainer } from './styles';
 import produce from 'immer';
-const rowSize = 50;
-const colSize = 50;
+const rowSize = 100;
+const colSize = 100;
+const speed = 100;
 
 const Life = () => {
   const [running, setRunning] = useState(false);
@@ -65,7 +66,7 @@ const Life = () => {
       });
     });
 
-    setTimeout(runSimulation, 100);
+    setTimeout(runSimulation, speed);
   }, []);
   const runningRef = useRef(running);
   runningRef.current = running;
