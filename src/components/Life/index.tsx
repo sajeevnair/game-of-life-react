@@ -16,14 +16,21 @@ const Life = () => {
     [1, 0],
     [1, 1],
   ];
-
-  const [grid, setGrid] = useState(() => {
+  const initGrid = () => {
     const rows: number[][] = [];
     for (let i = 0; i < rowSize; i++) {
       rows.push(Array.from(Array(colSize), () => 0));
     }
     return rows;
-  });
+  };
+  const randomizeGrid = () => {
+    const rows: number[][] = [];
+    for (let i = 0; i < rowSize; i++) {
+      rows.push(Array.from(Array(colSize), () => (Math.random() > 0.7 ? 1 : 0)));
+    }
+    return setGrid(rows);
+  };
+  const [grid, setGrid] = useState(initGrid);
   const onClickCell = (row: number, col: number) => {
     const newGrid = produce(grid, (gridCopy: number[][]) => {
       gridCopy[row][col] = grid[row][col] ? 0 : 1;
@@ -74,6 +81,8 @@ const Life = () => {
   return (
     <>
       <button onClick={onClickButton}>{running ? 'Stop' : 'Start'}</button>
+      <button onClick={() => setGrid(initGrid)}>Reset</button>
+      <button onClick={randomizeGrid}>Randomize</button>
       <GridContainer colSize={colSize}>
         {grid.map((row, i) =>
           row.map((col, j) => <Cell key={`${i}-${j}`} value={col} onClick={() => onClickCell(i, j)} />),
