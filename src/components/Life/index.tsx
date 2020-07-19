@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback, useRef } from 'react';
 import { Cell, GridContainer } from './styles';
 import produce from 'immer';
 const rowSize = 50;
@@ -6,6 +6,17 @@ const colSize = 50;
 
 const Life = () => {
   const [running, setRunning] = useState(false);
+  const operations = [
+    [0, -1],
+    [0, 1],
+    [-1, -1],
+    [-1, 0],
+    [-1, 1],
+    [1, -1],
+    [1, 0],
+    [1, 1],
+  ];
+
   const [grid, setGrid] = useState(() => {
     const rows: number[][] = [];
     for (let i = 0; i < rowSize; i++) {
@@ -19,8 +30,45 @@ const Life = () => {
     });
     setGrid(newGrid);
   };
+
+  const runSimulation = useCallback(() => {
+    if (!runningRef.current) {
+      return;
+    }
+
+    setGrid((g) => {
+      return produce(g, (gcopy: number[][]) => {
+        for (let i = 0; i < rowSize; i++) {
+          for (let j = 0; j < colSize; j++) {
+            let neighbours = 0;
+            operations.forEach(([x, y]) => {
+              const newI = i + x;
+              const newJ = j + y;
+              if (newI >= 0 && newI < rowSize && newJ >= 0 && newJ < colSize) {
+                neighbours += g[newI][newJ];
+              }
+            });
+            if (neighbours > 3 || neighbours < 2) {
+              gcopy[i][j] = 0;
+            } else if (g[i][j] === 0 && neighbours === 3) {
+              gcopy[i][j] = 1;
+            }
+          }
+        }
+      });
+    });
+
+    setTimeout(runSimulation, 100);
+  }, []);
+  const runningRef = useRef(running);
+  runningRef.current = running;
+
   const onClickButton = () => {
     setRunning((running) => !running);
+    if (!running) {
+      runningRef.current = true;
+      runSimulation();
+    }
   };
 
   return (
