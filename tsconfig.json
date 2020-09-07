@@ -1,27 +1,12 @@
 {
+  "extends": "@tsconfig/recommended/tsconfig.json",
   "compilerOptions": {
-    "target": "ESNEXT",
-    "module": "ESNEXT",
-
     "jsx": "react",
-    "sourceMap": true,
-    "removeComments": true,
-    "noEmit": true,
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
 
     "baseUrl": "./src",
     "paths": {
       "~*": ["./*"]
-    },
-    "esModuleInterop": true,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    }
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist", "build"]

@@ -1,8 +1,8 @@
 import React, { useState, useCallback, useRef } from 'react';
 import { Cell, GridContainer } from './styles';
 import produce from 'immer';
-const rowSize = 100;
-const colSize = 100;
+const rowSize = 20;
+const colSize = 20;
 const speed = 100;
 
 const Life = () => {
