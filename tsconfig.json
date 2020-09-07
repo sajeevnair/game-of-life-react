@@ -2,12 +2,12 @@
   "extends": "@tsconfig/recommended/tsconfig.json",
   "compilerOptions": {
     "jsx": "react",
-
-    "baseUrl": "./src",
-    "paths": {
-      "~*": ["./*"]
-    }
+    "rootDir": "src",
+    "baseUrl": "."
   },
-  "include": ["src/**/*"],
+  "include": [
+    "./src/**/*.ts",
+    "./src/**/*.tsx"
+  ],
   "exclude": ["node_modules", "dist", "build"]
 }
