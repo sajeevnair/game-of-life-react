@@ -7,7 +7,6 @@
     "moduleResolution": "node",
     "alwaysStrict": true,
     "jsx": "react",
-    "jsxFactory": "React.createElement",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
