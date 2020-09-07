@@ -6,7 +6,6 @@
   "author": "Sajeev Nair",
   "license": "MIT",
   "devDependencies": {
-    "@tsconfig/recommended": "^1.0.1",
     "@types/react": "^16.9.41",
     "@types/react-dom": "^16.9.8",
     "@types/styled-components": "^5.1.1",
